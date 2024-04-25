@@ -1,0 +1,469 @@
+<template>
+	<lightning-card >
+
+		<!-- NAVIGATION BAR  -->
+		<div class="slds-context-bar slds-p-bottom_large slds-p-top_large" id="navigation-bar">
+			<div class="slds-context-bar__primary" style="display: flex; align-items: center;">
+				<div class="slds-context-bar__item slds-context-bar__dropdown-trigger slds-dropdown-trigger slds-dropdown-trigger_click slds-no-hover">
+					<img class="app-logo" src={WanderRosterURL} alt="Logo" style="height: 40px;"/>
+					<span class="slds-context-bar__label-action slds-context-bar__app-name">
+					<span class="slds-truncate" title="App Name">WanderRoster</span>
+					</span>
+				</div>
+			</div>
+			<nav class="slds-context-bar__primary" role="navigation" style="display: flex; align-items: center;">
+				<ul class="slds-grid">
+					<li class="slds-context-bar__item slds-is-active">
+						<a href="#travel-type-section" class="slds-context-bar__label-action" title="Home" aria-current="true">
+						<span class="slds-assistive-text">Current Page:</span>
+						<span class="slds-truncate" title="Home">Home</span>
+						</a>
+					</li>
+					<li class="slds-context-bar__item">
+						<a href="#travel-policies-flow-section" class="slds-context-bar__label-action" title="Travel Approval Policy" aria-current="true">
+						<span class="slds-truncate" title="Travel Approval Policy">Travel Policies</span>
+						</a>
+					</li>
+					<li class="slds-context-bar__item">
+						<a href="#travel-flow-section" class="slds-context-bar__label-action" title="Raise a Travel Request" aria-current="true">
+						<span class="slds-truncate" title="Raise a Travel Request">Raise a Travel Request</span>
+						</a>
+					</li>
+					<li class="slds-context-bar__item">
+						<a href="#expense-flow-section" class="slds-context-bar__label-action" title="Request Allowance" aria-current="true">
+						<span class="slds-truncate" title="Request Allowance">Request Allowance</span>
+						</a>
+					</li>
+					<li class="slds-context-bar__item">
+						<a href="#service-section" class="slds-context-bar__label-action" title="Bookings" aria-current="true">
+						<span class="slds-truncate" title="Bookings">Bookings</span>
+						</a>
+					</li>
+					<li class="slds-context-bar__item">
+						<a href="#team-section" class="slds-context-bar__label-action" title="Developers" aria-current="true">
+						<span class="slds-truncate" title="Developers">Developers</span>
+						</a>
+					</li>
+					<li class="slds-context-bar__item">
+						<a href="#case-section" class="slds-context-bar__label-action" title="Raise Ticket" aria-current="true" onclick={navigateToChild}>
+						<span class="slds-truncate" title="Raise Ticket">Raise Ticket</span>
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+
+
+		<!-- TRAVEL TYPE CAROUSEL BAR  -->
+		<section  class="backgroundImg" id="travel-type-section" style={getBackgroundImage}>
+			<div class="slds-grid slds-wrap carousel slds-p-around_large" >
+				<div class="slds-col slds-size_2-of-7">
+					<!-- Empty div to take up 25% of the width -->
+				</div>
+				<div class="slds-col slds-size_3-of-7 slds-m-top_medium carousel-top">
+					<lightning-card>
+						<div class="travel-types">
+							<h1 class="slds-align_absolute-center"><span>Travel Types</span> </h1>
+						</div>
+						<div class="slds-var-m-bottom_medium"></div>
+						<c-carousel-Child carousel-details={carouselData} onnavigateevent={handleNavigateEvent}></c-carousel-Child>
+					</lightning-card>
+				</div>
+				<div class="slds-col slds-size_2-of-7">
+					<!-- Empty div to take up the remaining 25% of the width -->
+				</div>
+			</div>
+		</section>
+		<br>
+		<br>
+		<br>
+
+
+		<!-- OUR SERVICE -->
+		<section class="gallary" id="service-section">
+			<h1><span>Our Services</span></h1>
+			<br>
+			<br>
+			<div class="gallary_image_box" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+				<!-- Flight -->
+				<div class="gallary_image">
+					<img src={FlightURL}>
+					<h3>Flight</h3>
+					<a href="https://www.airindia.com/" target="_blank" class="gallary_btn">Book Now</a>
+				</div>
+				<!-- Bus -->
+				<div class="gallary_image">
+					<img src={BusURL}>
+					<h3>Bus</h3>
+					<a href="https://www.redbus.in/" target="_blank" class="gallary_btn">Book Now</a>
+				</div>
+				<!-- Cab -->
+				<div class="gallary_image">
+					<img src={CabURL}>
+					<h3>Cab</h3>
+					<a href="https://www.uber.com/in/en/" target="_blank" class="gallary_btn">Book Now</a>
+				</div>
+				<!-- Food -->
+				<div class="gallary_image">
+					<img src={FoodURL}>
+					<h3>Food</h3>
+					<a href="https://www.zomato.com/india" target="_blank" class="gallary_btn">Order Now</a>
+				</div>
+				<!-- Train -->
+				<div class="gallary_image">
+					<img src={TrainURL}>
+					<h3>Train</h3>
+					<a href="https://www.irctc.co.in/nget/train-search" target="_blank" class="gallary_btn">Book Now</a>
+				</div>
+			</div>
+		</section>
+		<br>
+		<br>
+		<br>
+
+
+		<!-- TRAVEL POLICIES FLOW -->
+		<section class="slds-grid slds-wrap" id="travel-policies-flow-section">
+			<div class="slds-col slds-size_2-of-9">
+				<!-- Empty div to take up the width -->
+			</div>
+			<div class="slds-col slds-size_5-of-9 policy-flow">
+				<lightning-flow flow-api-name='Travel_Policy_Flow'></lightning-flow>
+			</div>
+			<div class="slds-col slds-size_2-of-9">
+				<!-- Empty div to take up the width -->
+			</div>
+		</section>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+
+
+		<!-- TRAVEL COMPONENT -->
+		<section class="slds-grid slds-wrap" id="travel-flow-section">
+			<!-- h1>Travel Approval Request Form</h1 -->
+			<div class="slds-col slds-size_2-of-7">
+				<!-- Empty div to take up the width -->
+			</div>
+			<div class="slds-col slds-size_3-of-7">
+				<lightning-card  variant="Narrow">
+					<lightning-record-edit-form object-api-name="Travel_Approval_Request__c" onsubmit={handleSuccess} onsuccess={handleSuccessToast} onerror={handleErrorToast} >
+						<lightning-messages></lightning-messages>
+						<!--header class="slds-media slds-media_center slds-has-flexi-truncate">
+							<div class="slds-media__body">
+							    <h2 class="slds-card__header-title">
+							    </h2>
+							</div >
+							</header-->
+						<div class="slds-m-around_medium">
+							<h1><label class="flow-label">Travel Request Form</label></h1>
+							<br>
+							<br>
+							<lightning-input-field label="Travel Approval Number" field-name="name" value={travelApprovalNumber}></lightning-input-field>
+							<lightning-input-field label="Travel Type" field-name="Travel_Type__c" value={travelType} onchange={handleInputChangetravelType}></lightning-input-field>
+							<lightning-input-field label="Name" field-name="Employee_Name__c" value={empName} onchange={handleInputChangeempName}> </lightning-input-field>
+							<lightning-input-field label="Department" field-name="Department__c" value={department} onchange={handleInputChangedepartment}></lightning-input-field>
+							<lightning-input-field label="Purpose Of Trip" field-name="Purpose__c" value={purpose} onchange={handleInputChangePurpose}> </lightning-input-field>
+							<lightning-input-field label="Start Date" field-name="Start_Date__c" value={startDate} onchange={handleInputChangestartDate}></lightning-input-field>
+							<lightning-input-field label="End Date" field-name="End_Date__c" value={endDate} onchange={handleInputChangeendDate}> </lightning-input-field>
+							<lightning-input-field label="Destination State" field-name="Destination_State__c" value={destinationState} onchange={handleChange}></lightning-input-field>
+							<template class="conditional-render" if:true={showAdditionalField}>
+								<lightning-input-field label="State Code" field-name="State_Code__c" value={stateCode} onchange={handleInputChangestateCode}> </lightning-input-field>
+								<lightning-input-field label="Budget Amount" field-name="Budget_Amount__c" value={allowancePerDay} onchange={handleInputChangeallowancePerDay}></lightning-input-field>
+								<lightning-input-field label="Transportation Cost" field-name="Transportation_Cost__c" value={transportationCost} onchange={handleInputChangetransportationCost}> </lightning-input-field>
+							</template>
+							<div class="slds-m-top_medium">
+								<lightning-button variant="brand" type="reset" name="reset" label="Reset" onclick={handleReset} class="slds-m-around_small"> </lightning-button>
+								<lightning-button variant="brand" type="Preview" name="preview" label="Preview" onclick={generatePDF} class="slds-around_small-around_medium"></lightning-button>
+								<lightning-button variant="brand" type="submit" name="save" label="Submit" class="slds-m-around_small"> </lightning-button>
+							</div>
+						</div>
+					</lightning-record-edit-form>
+				</lightning-card>
+			</div>
+			<div class="slds-col slds-size_2-of-7">
+				<!-- Empty div to take up the width -->
+			</div>
+		</section>
+		<br>
+		<br>
+		<br>
+
+
+
+		<!-- EXPENSE ITEM FLOW -->
+		<section class="slds-grid slds-wrap" id="expense-flow-section">
+			<div class="slds-col slds-size_3-of-10">
+				<!-- Empty div to take up the width -->
+			</div>
+			<div class="slds-col slds-size_4-of-10 expense-flow">
+				<lightning-flow flow-api-name='Bill_Verification_flow'></lightning-flow>
+			</div>
+			<div class="slds-col slds-size_3-of-10">
+				<!-- Empty div to take up the width -->
+			</div>
+		</section>
+		<br>
+		<br>
+		<br>
+
+
+		<!-- Case Section -->
+		<section  id="case-section">
+			<div>
+				<template if:true={isChildComponentVisible}>
+					<c-case-Component></c-case-Component>
+				</template>
+			</div>
+		</section>
+		<br>
+		<br>
+		<br>
+
+
+		<!-- OUR TEAM -->
+		<section class="team" id="team-section" >
+			<div class="review" id="Review">
+				<h1><span>Our Team</span></h1>
+				<div class="review_box">
+					<div class="review_card">
+						<div class="review_profile">
+							<img src={RanajitURL}>
+						</div>
+						<div class="review_text">
+							<p class="name">Ranajit Biswas</p>
+							<div class="review_social">
+								<a href="mailto: biswasranajit2001@gmail.com">
+									<lightning-icon 
+										icon-name="action:email" 
+										alternative-text="Connected" 
+										size="small" 
+										class="slds-m-around_small">
+									</lightning-icon>
+								</a>
+								<a href="https://in.linkedin.com/in/ranajit-biswas-052765304">
+									<lightning-icon 
+										icon-name="action:share_link"  
+										alternative-text="Connected" 
+										size="small" 
+										class="slds-m-around_small">
+									</lightning-icon>
+								</a>
+								<a href="https://www.instagram.com/ranajit_here?igsh=Y2ZlYmRsdW5zdzBi&utm_source=qr">
+									<lightning-icon 
+										icon-name="action:follow" 
+										alternative-text="Connected" 
+										size="small" 
+										class="slds-m-around_small">
+									</lightning-icon>
+								</a>
+							</div>
+							<p class="our-designation">
+								Programmer Analyst - GP @ Cognizant
+							</p>
+						</div>
+					</div>
+					<div class="review_card">
+						<div class="review_profile">
+							<img src={SubhrojyotiURL}>
+						</div>
+						<div class="review_text">
+							<p class="name">Subhrojyoti Panja</p>
+							<div class="review_social">
+								<a href="mailto: subhrojyotipanja@gmail.com">
+									<lightning-icon 
+										icon-name="action:email" 
+										alternative-text="Connected" 
+										size="small" 
+										class="slds-m-around_small">
+									</lightning-icon>
+								</a>
+								<a href="https://www.linkedin.com/in/subhrojyoti-panja-a597761a7?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">
+									<lightning-icon 
+										icon-name="action:share_link" 
+										alternative-text="Connected" 
+										size="small" 
+										class="slds-m-around_small">
+									</lightning-icon>
+								</a>
+								<a href="https://www.instagram.com/subhrojyotipanja?igsh=ZnhqNHQyN2NuZmx3">
+									<lightning-icon 
+										icon-name="action:follow" 
+										alternative-text="Connected" 
+										size="small" 
+										class="slds-m-around_small">
+									</lightning-icon>
+								</a>
+							</div>
+							<p class="our-designation">
+								Programmer Analyst - GP @ Cognizant
+							</p>
+						</div>
+					</div>
+					<div class="review_card">
+						<div class="review_profile">
+							<img src={SDRURL}>
+						</div>
+						<div class="review_text">
+							<p class="name">Sayan Dutta Roy</p>
+							<div class="review_social">
+								<a href="mailto: duttaroy14sayan@gmail.com">
+									<lightning-icon 
+										icon-name="action:email" 
+										alternative-text="Connected" 
+										size="small" 
+										class="slds-m-around_small">
+									</lightning-icon>
+								</a>
+								<a href="https://www.linkedin.com/in/sdr11?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">
+									<lightning-icon 
+										icon-name="action:share_link" 
+										alternative-text="Connected" 
+										size="small" 
+										class="slds-m-around_small">
+									</lightning-icon>
+								</a>
+								<a href="https://www.instagram.com/duttaroy_11_sayan?igsh=MTdlN3l3c3JsYzF5ZA==">
+									<lightning-icon 
+										icon-name="action:follow" 
+										alternative-text="Connected" 
+										size="small" 
+										class="slds-m-around_small">
+									</lightning-icon>
+								</a>
+							</div>
+							<p class="our-designation">
+								Programmer Analyst - GP @ Cognizant
+							</p>
+						</div>
+					</div>
+					<div class="review_card">
+						<div class="review_profile">
+							<img src={SubhadeepURL}>
+						</div>
+						<div class="review_text">
+							<p class="name">Subhadip Dey</p>
+							<div class="review_social">
+								<a href="mailto: sdey2979@gmail.com">
+									<lightning-icon 
+										icon-name="action:email" 
+										alternative-text="Connected" 
+										size="small" 
+										class="slds-m-around_small">
+									</lightning-icon>
+								</a>
+								<a href="https://www.linkedin.com/in/subhadip-dey-5687bh45?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">
+									<lightning-icon 
+										icon-name="action:share_link" 
+										alternative-text="Connected" 
+										size="small" 
+										class="slds-m-around_small">
+									</lightning-icon>
+								</a>
+								<a href="https://www.instagram.com/openhei._.fur?igsh=cXhzOWEwaGFvNzI1">
+									<lightning-icon 
+										icon-name="action:follow" 
+										alternative-text="Connected" 
+										size="small" 
+										class="slds-m-around_small">
+									</lightning-icon>
+								</a>
+							</div>
+							<p class="our-designation">
+								Programmer Analyst - GP @ Cognizant
+							</p>
+						</div>
+					</div>
+					<div class="review_card">
+						<div class="review_profile">
+							<img src={SouparnaURL}>
+						</div>
+						<div class="review_text">
+							<p class="name">Souparna Dey</p>
+							<div class="review_social">
+								<a href="mailto: souparnadey325@gmail.com">
+									<lightning-icon 
+										icon-name="action:email" 
+										alternative-text="Connected" 
+										size="small" 
+										class="slds-m-around_small">
+									</lightning-icon>
+								</a>
+								<a href="https://www.linkedin.com/in/souparna-dey?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BIJ7wL9g%2BSc6h381WmrykmA%3D%3D">
+									<lightning-icon 
+										icon-name="action:share_link" 
+										alternative-text="Connected" 
+										size="small" 
+										class="slds-m-around_small">
+									</lightning-icon>
+								</a>
+								<a href="https://www.instagram.com/dey_souparno?igsh=eG1xc2NmNTd5NDIy">
+									<lightning-icon 
+										icon-name="action:follow" 
+										alternative-text="Connected" 
+										size="small" 
+										class="slds-m-around_small">
+									</lightning-icon>
+								</a>
+							</div>
+							<p class="our-designation">
+								Programmer Analyst - GP @ Cognizant
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<br>
+		<br>
+		<br>
+
+
+		<!-- FOOTER -->
+		<section class="footer" id="footer-section">
+			<div class="slds-grid slds-wrap footer_main">
+				<div class="slds-col slds-size_1-of-5 footer_tag">
+					<h2>Quick Link</h2>
+					<a href="#navigation-bar" class="footer-links">
+						<p>Home</p>
+					</a>
+					<a href="#travel-policies-flow-section" class="footer-links">
+						<p>Travel Policies</p>
+					</a>
+					<a href="#travel-flow-section" class="footer-links">
+						<p>Request Approval</p>
+					</a>
+					<a href="#expense-flow-section" class="footer-links">
+						<p>Request Allowance</p>
+					</a>
+					<a href="#service-section" class="footer-links">
+						<p>Bookings</p>
+					</a>
+					<a href="#team-section" class="footer-links">
+						<p>Developers</p>
+					</a>
+				</div>
+				<div class="slds-col slds-size_1-of-5 footer_tag">
+					<h2>Our Service</h2>
+					<p>Hassle Free Approvals</p>
+					<p>Easy Allowance Claim</p>
+					<p>Track Expenses</p>
+					<p>24 x 7 Service</p>
+				</div>
+				<div class="slds-col slds-size_1-of-5 footer_tag">
+					<h2>Contact</h2>
+					<p>duttaroy99sayan@gmail.com</p>
+					<p>biswasranajit2001@gmail.com</p>
+					<p>subhro.singur@gmail.com</p>
+					<p>sdey2979@gmail.com</p>
+					<p>souparnadey325@gmail.com</p>
+				</div>
+				<div class="slds-col slds-size_2-of-5 footer_tag">
+				</div>
+			</div>
+			<p class="end">Designed by<span><i class="fa-solid fa-face-grin"></i> Sayan Dutta Roy</span></p>
+		</section>
+	</lightning-card>
+</template>

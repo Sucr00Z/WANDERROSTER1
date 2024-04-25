@@ -1,0 +1,17 @@
+<template>
+    <div class="carousel-container">    
+        <div class="slds-m-around_large"> 
+            <lightning-carousel class="carousel" disable-auto-scroll>
+                <template for:each={carouselDetails} for:item="item">
+                    <lightning-carousel-image 
+                        id="carousel-image"
+                        key={item.header}
+                        src = {item.src}
+                        header = {item.header}
+                        class="carousel-image">
+                    </lightning-carousel-image>
+                </template>  
+            </lightning-carousel>
+        </div>
+    </div>
+</template>

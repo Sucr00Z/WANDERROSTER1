@@ -1,0 +1,27 @@
+<template>
+	<lightning-card>
+		<div class="slds-grid slds-wrap">
+			<div class="slds-col slds-size_3-of-10">
+			</div>
+			<div class="slds-p-horizontal_medium slds-col slds-size_4-of-10 ticket-form">
+                <h1><label class="flow-label">Raise A Ticket</label></h1>
+							<br>
+							<br>
+				<lightning-record-edit-form object-api-name="Case" record-id={caseId} onsuccess={handleSuccess}>
+					<lightning-input-field aria-placeholder="Enter Name" field-name="ContactId" data-id="reset"></lightning-input-field>
+					<lightning-input-field aria-placeholder="Enter Subject" field-name="Subject"></lightning-input-field>
+					<lightning-input-field aria-placeholder="Enter Subject" field-name="Status"></lightning-input-field>
+					<lightning-input-field aria-placeholder="Enter Subject" field-name="Origin"></lightning-input-field>
+					<lightning-input-field aria-placeholder="Enter Description" field-name="Description"></lightning-input-field>
+					<lightning-input-field aria-placeholder="Enter Reason" field-name="Reason"></lightning-input-field>
+					<div class="slds-align_absolute-center">
+						<lightning-button variant="Brand" type="submit" label="Submit" class ="slds-m-around_small"></lightning-button>
+						<lightning-button variant="Brand" type="reset" label="Reset" class ="slds-m-around_small" onclick={handleReset}></lightning-button>
+					</div>
+				</lightning-record-edit-form>
+			</div>
+			<div class="slds-col slds-size_3-of-10">
+			</div>
+		</div>
+	</lightning-card>
+</template>

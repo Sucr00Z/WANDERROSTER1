@@ -1,0 +1,14 @@
+.flow-label{
+  font-size: 48px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 15px;
+    color: #8E06EF;
+    font-family: Arial;
+}
+
+.ticket-form{
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
